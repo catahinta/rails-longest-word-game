@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Result</h1>
+
+  <p class="fw-bold"><%= params[:word].upcase %></p>
+
+  <% if @valid && @in_grid %>
+    <%= "Congratulations, it's a valid word" %>
+    <br>
+    <% @score = params[:word].length %>
+    <%= "Your score is #{@score}" %>
+  <% elsif @in_grid == false %>
+    <%= "Word not in grid" %>
+    <br>
+    <% @score = 0 %>
+    <%= "Your score is 0" %>
+  <% elsif @valid == false%>
+    <%= "Not an English word" %>
+    <br>
+    <% @score = 0 %>
+    <%= "Your score is 0" %>
+  <% end %>
+
+  <% @total_score += @score %>
+
+  <br>
+
+  <%= "Your total score is #{@total_score}" %>
+
+  <br>
+
+  <%= link_to "Play again", "/new" %>
+
+</div>
